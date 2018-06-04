@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width" />
+    <title>Image</title>
+    <style>
+        body {
+            margin: 0;
+            text-align: center;
+        }
+        @media (max-width: 375px) {
+            canvas {
+                width: 375px;
+                height: 375px;
+                border: 2px solid darkgreen;
+            }
+
+            body {
+                text-align: left;
+            }
+        }
+
+    </style>
+    <script>
+        window.requestAnimationFrame(drawImage);
+        window.addEventListener("devicemotion", handleMotion, true);
+
+        function handleMotion(event) {
+
+            var x = event.accelerationIncludingGravity.x;
+            var y = event.accelerationIncludingGravity.y;
+
+
+            drawImage(x,y);
+        }
+        function drawImage(a,b) {
+
+            var canvas = document.getElementById("image");
+            var ctx = canvas.getContext("2d");
+            var i;
+
+            var wid_og = canvas.width;
+            var ht_og = canvas.height;
+
+            var x=2;
+            var y = 2;
+
+            ctx.clearRect(0,0,wid_og,ht_og);
+
+            //Main Rectangle
+            ctx.beginPath();
+            ctx.fillStyle = "black";
+            ctx.fillRect(x,y, wid_og,ht_og);
+            ctx.closePath();
+
+
+            //UpperLeftRectangle
+            var wid = (wid_og/2);
+            var ht = (ht_og/2);
+
+            for (i = 21; i>0; i--) {
+                if(i%2==0){
+                    ctx.beginPath();
+                    if(a*500 > 1){
+                        ctx.fillStyle = "navy";
+                    }
+                    else {
+                        ctx.fillStyle = "red";
+                    }
+
+                    ctx.fillRect(x,y, wid,ht);
+
+                    wid-=12;
+                    ht-=12;
+                    x+=6;
+                    y+=6;
+
+                }
+                else{
+                    ctx.beginPath();
+                    if(b>8){
+                        ctx.fillStyle = "hotpink";
+                    }
+                    else {
+                        ctx.fillStyle = "black";
+                    }
+
+                    ctx.fillRect(x,y, wid,ht);
+                    ctx.closePath();
+
+                    wid-=12;
+                    ht-=12;
+                    x+=6;
+                    y+=6;
+
+                }
+            }
+            ctx.save();
+
+            //UpperRightRectangle
+            wid = (wid_og/2);
+            ht = (ht_og/2);
+
+            x = (wid_og/2)-2;
+            y = 2;
+
+            ctx.restore();
+            for (i = 21; i>0; i--) {
+                if(i%2==0){
+                    ctx.beginPath();
+                    if(a*500 > 1){
+                        ctx.fillStyle = "navy";
+                    }
+                    else {
+                        ctx.fillStyle = "red";
+                    }
+
+                    ctx.fillRect(x,y, wid,ht);
+                    ctx.closePath();
+
+                    wid-=12;
+                    ht-=12;
+                    x+=6;
+                    y+=6;
+
+                }
+                else{
+                    ctx.beginPath();
+                    if(b>8){
+                        ctx.fillStyle = "hotpink";
+                    }
+                    else {
+                        ctx.fillStyle = "black";
+                    }
+
+                    ctx.fillRect(x,y, wid,ht);
+                    ctx.closePath();
+
+                    wid-=12;
+                    ht-=12;
+                    x+=6;
+                    y+=6;
+
+                }
+            }
+            ctx.save();
+
+            //LowerLeftRectangle
+            wid = (wid_og/2);
+            ht = (ht_og/2);
+
+            x = 2;
+            y = (ht_og/2)-2;
+
+            ctx.restore();
+            for (i = 21; i>0; i--) {
+                if(i%2==0){
+                    ctx.beginPath();
+                    if(a*500 > 1){
+                        ctx.fillStyle = "navy";
+                    }
+                    else {
+                        ctx.fillStyle = "red";
+                    }
+
+                    ctx.fillRect(x,y, wid,ht);
+                    ctx.closePath();
+
+                    wid-=12;
+                    ht-=12;
+                    x+=6;
+                    y+=6;
+
+                }
+                else{
+                    ctx.beginPath();
+                    if(b>8){
+                        ctx.fillStyle = "hotpink";
+                    }
+                    else {
+                        ctx.fillStyle = "black";
+                    }
+
+                    ctx.fillRect(x,y, wid,ht);
+                    ctx.closePath();
+
+                    wid-=12;
+                    ht-=12;
+                    x+=6;
+                    y+=6;
+
+                }
+            }
+
+            ctx.save();
+
+            //LowerRightRectangle
+            wid = (wid_og/2);
+            ht = (ht_og/2);
+
+            x = (wid_og/2)-2;
+            y = (ht_og/2)-2;
+
+            ctx.restore();
+            for (i = 21; i>0; i--) {
+                if(i%2==0){
+                    ctx.beginPath();
+                    if(a*500 > 1){
+                        ctx.fillStyle = "navy";
+                    }
+                    else {
+                        ctx.fillStyle = "red";
+                    }
+                    ctx.fillRect(x,y, wid,ht);
+                    ctx.closePath();
+
+                    wid-=12;
+                    ht-=12;
+                    x+=6;
+                    y+=6;
+
+                }
+                else{
+                    ctx.beginPath();
+                    if(b>8){
+                        ctx.fillStyle = "hotpink";
+                    }
+                    else {
+                        ctx.fillStyle = "black";
+                    }
+                    ctx.fillRect(x,y, wid,ht);
+                    ctx.closePath();
+
+                    wid-=12;
+                    ht-=12;
+                    x+=6;
+                    y+=6;
+
+                }
+            }
+
+            ctx.beginPath();
+            ctx.lineWidth = 10;
+            ctx.strokeStyle = "black";
+            ctx.strokeRect(0,0, wid_og,ht_og);
+            ctx.closePath();
+        }
+
+    </script>
+</head>
+<body onload="drawImage()">
+<canvas id="image" width="500" height="500" style="border:1px solid"></canvas>
+</body>
+</html>
